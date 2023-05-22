@@ -15,7 +15,7 @@ grid_state = deepcopy(grid)
 grid_state[start[0], start[1]] = cell_type_codes["start"]
 grid_state[goal[0], goal[1]] = cell_type_codes["goal"]
 viz_grid(grid_state)
-# plt.pause(1/speed)                                                                                                   )
+plt.pause(1/speed)
 
 frontier = PriorityQueue()
 frontier.put((get_dist(start,goal), start))
