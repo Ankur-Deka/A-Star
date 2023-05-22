@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from copy import deepcopy
+import imageio
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,12 +11,12 @@ grid = get_grid()
 speed = 1000
 H, W = grid.shape
 
-start = (H-1, 0)
-goal = (0, W-1)
+start = (H-7, 7)
+goal = (7, W-1-7)
 grid_state = deepcopy(grid)
 grid_state[start[0], start[1]] = cell_type_codes["start"]
 grid_state[goal[0], goal[1]] = cell_type_codes["goal"]
-viz_grid(grid_state)
+frames = [viz_grid(grid_state)]
 plt.pause(1/speed)
 
 frontier = OrderedDict([(start, (0, None)),])
@@ -64,7 +65,7 @@ while not found and len(frontier):
     grid_state[node[0], node[1]] = cell_type_codes["done_exploring"]
     grid_state[start[0], start[1]] = cell_type_codes["start"]
     grid_state[goal[0], goal[1]] = cell_type_codes["goal"]
-    viz_grid(grid_state)
+    frames.append(viz_grid(grid_state))
     plt.pause(1/speed)
 
 if found:
@@ -82,8 +83,9 @@ if found:
     grid_state[goal[0], goal[1]] = cell_type_codes["goal"]
     print(ans)
     plt.close()
-    viz_grid(grid_state)
+    frames.extend([viz_grid(grid_state)]*10)
     plt.show()
 
+imageio.mimsave('dijkstra.gif', frames, fps=10)
 
 
