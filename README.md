@@ -5,17 +5,23 @@
 
 ## Example 1
 <p float="center">
+    <img src="videos/dijkstra_0.gif" width="300">
+    <img src="videos/astar_0.gif" width="300">
+</p>
+
+## Example 2
+<p float="center">
     <img src="videos/dijkstra_1.gif" width="300">
     <img src="videos/astar_1.gif" width="300">
 </p>
 
-## Example 2
+## Example 3
 <p float="center">
     <img src="videos/dijkstra_2.gif" width="300">
     <img src="videos/astar_2.gif" width="300">
 </p>
 
-## Example 3
+## Example 4
 <p float="center">
     <img src="videos/dijkstra_3.gif" width="300">
     <img src="videos/astar_3.gif" width="300">
