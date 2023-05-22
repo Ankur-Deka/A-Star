@@ -18,7 +18,7 @@ grid_state[goal[0], goal[1]] = cell_type_codes["goal"]
 viz_grid(grid_state)
 plt.pause(1/speed)
 
-frontier = dict([(start, (0, None)),])
+frontier = OrderedDict([(start, (0, None)),])
 dists = np.array([[np.inf] * W for _ in range(H)])
 dists[start[0],start[1]] = 0
 done_nodes = dict()
@@ -31,7 +31,8 @@ def update_frontier_dist(node, parent, parent_dist, frontier, grid_state):
     grid_state[node[0], node[1]] = cell_type_codes["exploring"]
 
 while not found and len(frontier):
-    min_id = np.argmin(frontier.keys())
+    frontier_dists = [v[0] for v in list(frontier.values())]
+    min_id = np.argmin(frontier_dists)
     node = list(frontier.keys())[min_id]
     dist, _ = frontier[node]
     
